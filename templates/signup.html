@@ -1,0 +1,26 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Comptible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1 style="text-align: center">Registration</h1> 
+
+ <form method="POST" >
+ <fieldset style="width: 500px; margin-left: 31%">
+ 
+    {% csrf_token %}
+    {{ form | crispy }}
+    <br>
+    <br>
+    <button type="submit" style="margin-left:42%">Register</button>
+    </fieldset>
+</form>   
+
+
+</body>
+</html>
