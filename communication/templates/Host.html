@@ -9,9 +9,14 @@
 </head>
 <body>
 
-<h1>This is the home page</h1>
-    
-<a href="/communication/Host" >Quiz</a>
+<form action="/communication/external" method="post" > 
+    {% csrf_token %}
+
+<h1> This is the Quiz name</h1>
+
+     
+<button>Publish</button>
+</form>
 
 </body>
 </html>

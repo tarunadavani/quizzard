@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +8,14 @@
 </head>
 <body>
 
-<h1>This is the home page</h1>
-    
-<a href="/communication/Host" >Quiz</a>
+<form action="/external" method="post" > 
+    {% csrf_token %}
+
+<h1> Server.py is running.</h1>
+
+     
+
+</form>
 
 </body>
 </html>
