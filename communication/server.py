@@ -13,7 +13,7 @@ class clientthread(threading.Thread):
         threading.Thread.__init__(self)
         self.csocket = clt
         self.x =x
-        print(f"connection to {adr} established")
+        #print(f"connection to {adr} established")
         #self.cc = cc 
     def run(self):
         #print('Inside class and inside run method', self.cc)
@@ -51,11 +51,10 @@ class socket_create(threading.Thread):
         s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         s.bind((socket.gethostname(), port))
         self.s=s #server and client are on same computer #gethostname()
-        return self.s
+        return port
         #cc = 0
         
     def listing_connections(self):
-
         x=[]
     #client counter
 
@@ -73,9 +72,17 @@ class socket_create(threading.Thread):
             print("client name: "+data)
             newthread = clientthread(adr, clt ,x)
             newthread.start()
-            print('hi')
-
             
+            
+        
+# s=socket_create()
+# y=s.main()
+# print(y)           
+# s=socket_create()
+# y=s.main()
+# s.listing_connections()            
+# z=s1.listen()
+# print(z)            
         #cc=cc+1
         #print(cc)  
 

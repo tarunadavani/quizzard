@@ -12,14 +12,25 @@ def Host(request):
     
     return render(request,"Host.html")
 
+# def getUsers(*userLise):
+#     return userList = *userLise
+
  
-
+x=[]
 def external(request):
-
+    
     s=socket_create()
-    s.main()
-    s.listing_connections() 
-    # #out=run([sys.executable,'//Users//tarun.advani//Documents//quizzard//communication//server.py'],shell=False,stdout=PIPE)
+    y=s.main()
+    s.listing_connections()
+    # context={
+    #     'external':y
+    # }
+    #s.listing_connections()
+    #getUsers()
+    # context = {
+    #     'external': y
+    # }
+    #out=run([sys.executable,'//Users//tarun.advani//Documents//quizzard//communication//server.py'],shell=False,stdout=PIPE)
     #print(out)
     
     return render(request,"publish.html")

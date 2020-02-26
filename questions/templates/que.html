@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Comptible" content="ie=edge">
+    <title>Add Questions</title>
+<style>
+div.addbutton
+    {
+        position:absolute;
+        right:430;
+        top:30;            
+    }
+</style>    
+</head>
+<body>
+<form method="post">
+{% csrf_token %}
+
+<div class = 'addbutton'> 
+<a href="question"><button> Add Question</button></a>
+</div>
+<center>
+<h2>
+<p>
+ Quiz Title
+ </p>
+ <br/>
+ </h2>
+</center>
+<br/>
+<center>
+<p>Add Your Questions & Options and Select the right Option.</center>
+<br>
+<center>
+<textarea rows="2" cols="100" placeholder="Click to start typing your question"></textarea></center>
+<br>
+
+<center>
+<br>
+<input type="radio" id="option1" name="options"> <input type="text" name="answer1" placeholder="Add answer1">
+<input type="radio" id="option1" name="options"> <input type="text" name="answer2" placeholder="Add answer2">
+<input type="radio" id="option1" name="options"> <input type="text" name="answer3" placeholder="Add answer3">
+<input type="radio" id="option1" name="options"> <input type="text" name="answer4" placeholder="Add answer4">
+</center>
+<br>
+<center>
+<input type="file" name="filename">
+<input type="submit">
+</center>
+<br>
+<center>
+<button><a href="/home"> Finish </button></a>
+</center>  
+</form>   
+</body>
+</html>
