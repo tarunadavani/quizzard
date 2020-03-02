@@ -15,11 +15,10 @@ div.addbutton
 </style>    
 </head>
 <body>
-<form method="post">
-{% csrf_token %}
+
 
 <div class = 'addbutton'> 
-<a href="question"><button> Add Question</button></a>
+<button onclick="call()"> Add Question</button>
 </div>
 <center>
 <h2>
@@ -51,8 +50,19 @@ div.addbutton
 </center>
 <br>
 <center>
-<button><a href="/home"> Finish </button></a>
-</center>  
-</form>   
+<button onclick="callme()"> Finish </button>
+</center> 
+
+<script>
+function callme()
+{
+ window.location.href = "/home";
+}
+function call()
+{
+ window.location.href = "question";
+}
+</script>
+  
 </body>
 </html>

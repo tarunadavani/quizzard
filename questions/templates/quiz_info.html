@@ -4,26 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Comptible" content="ie=edge">
+    <meta http-equiv="zX-UA-Comptible" content="ie=edge">
     <title>Quiz Information</title>
+     <!-- Bootstrap CSS-->
+    <link 
+       rel  = 'stylesheet'
+       href = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
 </head>
 <body>
 <br>
-<input type="text" name="quiz_title" placeholder="Enter Quiz Title">
-<br><br>
-<textarea rows="4" cols="50" name="quiz_desc" placeholder="Enter Quiz Description"></textarea>
-<br><br>
-<input type="text" name="timer" placeholder="Enter Timer per question">
-<br><br>
-<input type="text" name="points" placeholder="Enter Points per question">
-<br><br>
-<button onclick="call()"> Let's Create</button>
-<br><br>
-<script>
+<form action="question" method="POST">
+{% csrf_token %}
+<div class='form-group'>
+<label class = 'col-2'><kbd>Enter Quiz Title: </kbd></label>
+<input class="form-control col-8" type="text" name="quiz_name" placeholder="Enter Quiz Title">
+</div>
+<textarea rows="4" cols="50" name="description" placeholder="Enter Quiz Description"></textarea>
+
+<input type="number" name="tpq" placeholder="Enter Timer per question">
+
+<input type="text" name="ppq" placeholder="Enter Points per question">
+
+<button > Let's Create</button>
+
+</form>
+{% comment %} <script>
 function call()
 {
  window.location.href = "question";
 }
+</script> {% endcomment %}
+
+
+<script 
+   src = 'https://code.jquery.com/jquery-3.2.1.slim.min.js'>
+</script>   
+
+<script
+   src = 'https://cdnjs.cloudfare.com/ajax/libs/popper.js/1.12.9/umd//popper.min.js'>
 </script>
+
+<script 
+   src = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'>
+</script>   
+
 </body>
 </html>

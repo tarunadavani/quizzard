@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 
@@ -11,10 +12,10 @@ class Question(models.Model):
     quiz_id= models.ForeignKey("Quiz_settings", on_delete=models.CASCADE)
 
 class Quiz_settings(models.Model):
-    quiz_id= models.IntegerField(primary_key=True)
+    # quiz_id= models.IntegerField(primary_key=True)
     quiz_name= models.CharField(max_length=200)
     description= models.TextField()
-    user_id= models.ForeignKey("authentication.admin",on_delete=models.CASCADE)
+    user_id= models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     ppq= models.IntegerField()
     tpq= models.IntegerField()
 
