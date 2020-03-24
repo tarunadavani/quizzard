@@ -1,0 +1,36 @@
+fieldset
+{
+    padding: 20px;
+    margin: 20px 0;
+    border: 3px solid #222;
+}
+ 
+legend
+{
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+ 
+#content label
+{
+    display: inline;
+    float: left;
+    margin-right: 4px;
+    vertical-align: top;
+}
+ 
+#ex
+{
+ 
+    padding-top: 170px;
+}
+ 
+body
+{
+    background-color: aliceblue;
+ 
+}

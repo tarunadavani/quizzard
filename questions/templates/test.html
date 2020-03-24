@@ -1,0 +1,31 @@
+<html>
+<body>
+<script>
+let count = 0;
+const questionArr = [];
+function myFunc() {
+    let question = document.getElementById('que').value;
+    let desc = document.getElementById('desc').value;
+    let media = document.getElementById('mediaURL').value;
+    const que = {
+        question: question,
+        desc: desc,
+        mediaURL: mediaURL
+    }
+    questionArr.push(que)
+    document.getElementById('que').value = '';
+    document.getElementById('desc').value = '';
+    document.getElementById('mediaURL').value = '';
+}
+function finish() {
+    console.log(questionArr)
+}
+</script>
+    <input type='text' id='que' placeholder='Enter question'/>
+    <input type='text' id='desc' placeholder='Enter description'/>
+    <input type='text' id='mediaURL' placeholder='media_URL'/>
+    <button onClick="myFunc()" >+</button>
+    <button onClick="finish()" >Finish</button>
+</body>
+</html>
+

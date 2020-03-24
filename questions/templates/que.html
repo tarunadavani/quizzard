@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head> 
+ 
+<meta charset = 'UTF-8'>
+<meta name="viewport" content="width=device≥-width, initial-scale=1">
+<meta http-equiv="X-UA-Comptible" content="ie=edge">
+ 
+ <!-- Bootstrap CSS-->
+ 
+ <link 
+ rel = 'stylesheet'
+ href = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+ 
+ 
+ <link rel = 'stylesheet' type = 'text/css' href = "{% static '/css/styles.css' %}"> 
+ 
+ 
+</head>
+
+<script
+ src="https://code.jquery.com/jquery-3.4.1.min.js"
+ integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+ crossorigin="anonymous">
+</script>
+
+<script>
+let count = 0;
+const questionArr = [];
+function myFunc() {
+    count++
+    let question = document.getElementById('que').value;
+    let op1 = document.getElementById('op1').value;
+    let op2 = document.getElementById('op2').value;
+    let op3 = document.getElementById('op3').value;
+    let op4 = document.getElementById('op4').value;
+    let mediaURL = document.getElementById('myFile').files[0].name;
+    const ques = {
+        'question': question,
+        'op1': op1,
+        'op2': op2,
+        'op3': op3,
+        'op4': op4,
+        'mediaURL': mediaURL
+    }
+    questionArr.push(ques)
+    
+    document.getElementById('que').value = '';
+    document.getElementById('op1').value = '';
+    document.getElementById('op2').value = '';
+    document.getElementById('op3').value = '';
+    document.getElementById('op4').value = '';
+    document.getElementById('myFile').value = '';
+    
+}
+function finish() {
+    const finalcount={
+        count: count
+    }
+    //questionArr.push(ques)
+    console.log(finalcount)
+    console.log(questionArr)
+    const jsonString = JSON.stringify(questionArr);
+    const jsonString1 = JSON.stringify(finalcount);
+    console.log('JOSN STR: ', jsonString)
+    console.log('JOSN STR: ', jsonString1)
+
+    function getCookie(name) {
+   var cookieValue = null;
+      if (document.cookie && document.cookie != '') {
+         var cookies = document.cookie.split(';');
+         for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+               if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+               }
+         }
+      }
+      return cookieValue;
+   }
+   var csrftoken = getCookie('csrftoken');
+   function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+   }
+
+   
+ $.ajax(
+    {
+    url: "finish",
+    type: "POST",
+    dataType: "json",
+    data: {csrfmiddlewaretoken: '{{ csrf_token }}',
+      jsonString,
+      jsonString1
+    },
+    success: function(data ){
+       console.log('Data: ', data)
+       window.location.href = "question"
+   },
+    error: function(e) {
+       console.log('Error: ', Object.keys(e))
+       console.log('Res Text: ', e.responseText)
+       //window.location.href = e.responseText
+   }
+})
+    
+}
+
+
+</script>
+<body>
+ 
+<fieldset style = 'width:63%; margin-left: 45px;'>
+ 
+<h2 style = 'color:DarkGoldenRod; margin-top:10px; font-family:Arnoldboecklin, fantasy;'>Quiz Title</h2>
+{% comment %} <form action = '/home/' method='POST'> {% endcomment %}
+<!--<form action = 'home' method = 'POST'>-->
+<br/>
+ 
+ 
+ 
+ 
+ 
+{% comment %} {% csrf_token %}  {% endcomment %}
+
+
+<div class = 'form-group'>
+<label><kbd>Add Your Questions & Options and Select the right Option.</kbd></label>
+</div>
+
+<div class = 'form-group'>
+<label><kbd>Enter your question</kbd></label> 
+<textarea type="text" id='que' name = 'question' class = 'form-control' placeholder="Click to start typing your question" size="50"></textarea>
+</div>
+ 
+ 
+ 
+<div class = 'form-group'>
+ 
+
+ 
+<div class = 'form-check-inline'>
+<input type="radio" id='rd1' name = 'option1' class = 'form-check-input' ><input type="text" id='op1' class = 'form-control' placeholder="Enter option-1" name = 'answer1'>
+</div>
+ 
+<div class = 'form-check-inline'>
+<input type="radio" id='rd2' name = 'option2' class = 'form-check-input' ><input type="text" id='op2' class = 'form-control' placeholder="Enter option-2" name = 'answer2'>
+</div>
+ 
+<div class = 'form-check-inline'>
+<input type="radio" id='rd3' name = 'option3' class = 'form-check-input' ><input type="text" id='op3' class = 'form-control' placeholder="Enter option-3" name = 'answer3'>
+</div>
+ 
+<div class = 'form-check-inline'>
+<input type="radio" id='rd4' name = 'option4' class = 'form-check-input' ><input type="text" id='op4' class = 'form-control' placeholder="Enter option-4" name= 'answer4'> 
+</div> 
+ 
+ 
+ </div> 
+<br/>
+ 
+
+ 
+
+<input type="file" id="myFile" name="filename">
+
+<br/> <br/> 
+ 
+ 
+ 
+<br/>
+<br/> 
+
+<button onClick="finish()" >Finish</button>
+{% comment %} </form>  {% endcomment %}
+
+ 
+ <button class ='btn-lg' onClick="myFunc()" >+</button>
+
+ 
+
+ 
+</fieldset>
+ 
+</body>
+</html>
