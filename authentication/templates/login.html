@@ -10,7 +10,7 @@
 <body>
 
 <h1 style="text-align: center">  Login</h1>
-<form method="POST" action="signup" style="text-align: center; margin-left: 34%; margin-top: 2%">
+<form method="POST" action="login" style="text-align: center; margin-left: 34%; margin-top: 2%">
 <fieldset style="width: 500px;">
     
     {% csrf_token %}
@@ -22,7 +22,7 @@
        
 </fieldset>
 <br>
-<button style="margin-left:-550px">Click here to sign up</button>
+<form action="signup"><a href='signup'><button style="margin-left:-550px">Click here to sign up</button></a>
 </form>
 </div> 
 </body>

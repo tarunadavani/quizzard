@@ -23,7 +23,8 @@ urlpatterns = [
     path('home/', home),
     path('authentication/',include('authentication.urls')),
     path('communication/',include('communication.urls')),
-    path('questions/',include('questions.urls'))
+    path('questions/',include('questions.urls')),
+    path('client/',include('client.urls'))
     #path('authentication/', login_view),
     #path('authentication/register', register_view),
     #path('Host.html', Host),

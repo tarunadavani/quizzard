@@ -56,13 +56,15 @@ def add_question(request):
 
 def finish(request):
     data = json.loads(request.POST['jsonString'])
-    counts = json.loads(request.POST.get('jsonString1'))
-    print(counts)
+    # counts = json.loads(request.POST['jsonString1'])
+    # print(counts)
     print(data)
      
     print(data[0]['question'])
-    count = counts.get('count', None)
-    print(count)
+    quest= data[0]['question']
+    print(quest)
+    # count = counts.get('count', None)
+    # print(count)
     length= len(data)
     print(length)
     # print (data["ques"][0]["question "])
@@ -70,25 +72,34 @@ def finish(request):
     # print(count1)
     # count = ques.get('count', None)
     # print(count)
-
-    for i in (1,count+1):
-        # for i in length:
-        question= data["question"]
+    i=0
+    while i<length:
+        print(i)
+        question= data[i]['question']
         print(question)
-        op1 = data[op1]
-        op2 = data[op2].get('op2', None)
-        op3 = data[op3].get('op3', None)
-        op4 = data.get('op4', None)
-        mediaURL = data.get('mediaURL', None)
+        op1 = data[i]['op1']
+        print(op1)
+        op2 = data[i]['op2']
+        print(op2)
+        op3 = data[i]['op3']
+        op4 = data[i]['op4']
+        mediaURL = data[i]['mediaURL']
         question = Question(question=question,media_url=mediaURL,quiz_id_id=1)
         question.save()
         que_id = question.id
         for i in range (1,5):
+            print(op1)
             option = [f'op{i}']
+            # option = op[i]
+            print(option)
             options = Options(option=option, que_id_id=que_id)
             options.save()
+        i=i+1
+        data2 = {
+        "home" : "/home"
+    }
         # option_entry(request,question_entry(request))
-    return HttpResponse('/home')
+    return HttpResponse(json.dumps(data2), content_type="application/json")
 
 def quiz_info(request):
     return render(request,"quiz_info.html")
